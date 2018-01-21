@@ -1,6 +1,7 @@
 # Devcamp Portfolio Application
 
 > This is my Ruby on Rails 5 Portfolio Application
+> DevCamp Portfolio
 
 ### Features
 
