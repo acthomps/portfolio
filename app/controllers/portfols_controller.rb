@@ -13,7 +13,7 @@ class PortfolsController < ApplicationController
 	end
 
 	def create
-		@portfolio_item = Portfol.new(params.require(:portfol).permit(:title, :subtitle, :body, technologies_attributes: [:name]))
+		@portfolio_item = Portfol.new(portfolio_params)
 
 		respond_to do |format|
 			if @portfolio_item.save 
@@ -32,7 +32,7 @@ class PortfolsController < ApplicationController
 		@portfolio_item = Portfol.find(params[:id])
 
     respond_to do |format|
-      if @portfolio_item.update(params.require(:portfol).permit(:title, :subtitle, :body))
+      if @portfolio_item.update(portfolio_params)
         format.html { redirect_to portfols_path, notice: 'Portfolio Item was successfully updated.' }
       else
         format.html { render :edit }
@@ -51,5 +51,14 @@ class PortfolsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to portfols_url, notice: 'Portfolio Item was successfully destroyed.' }
     end
+  end
+
+  private 
+
+  def portfolio_params
+  	params.require(:portfol).permit(:title,
+  																	:subtitle,
+  																	:body,
+  																	technologies_attributes: [:name])
   end
 end
