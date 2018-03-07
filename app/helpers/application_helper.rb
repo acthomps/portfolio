@@ -53,7 +53,6 @@ module ApplicationHelper
 
 		end
 
-
 		nav_links.html_safe
   end
 
