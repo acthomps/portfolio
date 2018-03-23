@@ -6,6 +6,9 @@ class Portfol < ApplicationRecord
 	include Placeholder
 	validates_presence_of :title, :body, :main_image, :thumb_image
 
+	mount_uploader :thumb_image, PortfolioUploader
+	mount_uploader :main_image, PortfolioUploader
+
 	#Can use either one to choose what topic you want to be seen
 	def self.angular
 		where(subtitle: 'Angular')
