@@ -22,7 +22,6 @@ class PortfolsController < ApplicationController
 
 	def new
 		@portfolio_item = Portfol.new
-		3.times {@portfolio_item.technologies.build}
 	end
 
 	def create
@@ -68,7 +67,8 @@ class PortfolsController < ApplicationController
   																	:body,
                                     :main_image,
                                     :thumb_image,
-  																	technologies_attributes: [:name])
+  																	technologies_attributes: [:id, :name, :_destroy]
+                                    )
   end
 
   def set_portfolio_item
