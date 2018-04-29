@@ -7,8 +7,12 @@ set_positions = ->
     return
   return
 
+
+
 ready = ->
   set_positions()
+  $('.container').sortable() ->
+    connectWith: '.container'
   $('.sortable').sortable()
   $('.sortable').sortable().bind 'sortupdate', (e, ui) ->
     updated_order = []
